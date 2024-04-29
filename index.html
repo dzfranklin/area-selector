@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bounds Picker</title>
+</head>
+
+<body>
+  <div id="app">
+    <div id="map"></div>
+
+    <div id="controls">
+      <div>Hint: Try clicking anywhere on the map</div>
+
+      <div>
+        <label for="simplification-level">Simplification level</label>
+        <input id="simplification-level" type="number" min="0" max="1" step="0.005" />
+        <button id="reset-simplification">Reset</button>
+      </div>
+
+      <div class="values" style="display: none">
+        <div class="value-pane">
+          <h2>BBox</h2>
+          <p class="details">(min_lng, min_lat, max_lng, max_lat order)</p>
+          <div class="value" id="bbox-value"></div>
+        </div>
+        <div class="value-pane">
+          <h2>GeoJSON</h2>
+          <div class="value" id="geojson-value"></div>
+        </div>
+      </div>
+
+      <div id="controls__advanced">
+        <h3>Advanced options</h3>
+
+        <div>
+          <label for="osm-id-input">
+            Search by
+            <a href="https://www.openstreetmap.org">OpenStreetMap</a>
+            ID
+          </label>
+          <select id="osm-type-select">
+            <option value="relation">Relation</option>
+            <option value="way">Way</option>
+          </select>
+          <input id="osm-id-input" placeholder="4495545" />
+          <button id="fetch-from-osm">Fetch bounds from OSM</button>
+        </div>
+
+        <div>
+          <label for="overpass-api-endpoint">Overpass API endpoint</label>
+          <input id="overpass-api-endpoint" />
+          <button id="apply-config">Apply</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

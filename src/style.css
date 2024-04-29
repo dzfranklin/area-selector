@@ -1,0 +1,115 @@
+html,
+body,
+#app {
+  height: 100%;
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  grid-template-rows: minmax(0, 1fr);
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+#map .popup {
+  padding: 5px;
+
+  h4 {
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+#controls {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow: scroll;
+}
+
+#controls {
+  input,
+  button,
+  select {
+    margin: 0.25rem;
+  }
+
+  #controls__advanced {
+    h3 {
+      margin: 0;
+    }
+
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  #osm-id-input {
+    width: 12em;
+  }
+}
+
+#controls label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.tag-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #d8d7d7;
+  }
+}
+
+.values {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0;
+  padding: 2rem 0;
+
+  .value-pane {
+    margin: 1rem 0;
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .details {
+    color: #666;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin: 0.25rem 0;
+  }
+
+  pre {
+    max-height: 100px;
+    overflow: auto;
+    padding: 0.75rem;
+    background-color: #f8f8f8;
+    border-radius: 0.25rem;
+  }
+}
