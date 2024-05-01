@@ -2,6 +2,7 @@ import L from "leaflet";
 import { MaptilerLayer, MaptilerStyle } from "@maptiler/leaflet-maptilersdk";
 import osmtogeojson from "osmtogeojson";
 import simplify from "@turf/simplify";
+import * as wkt from "wkt";
 import "leaflet-draw";
 
 import "./style.css";
@@ -28,6 +29,7 @@ const resetSimplificationBtn = $<HTMLButtonElement>("#reset-simplification");
 const valuesSection = $<HTMLDivElement>(".values");
 const bboxValue = $<HTMLDivElement>("#bbox-value");
 const geojsonValue = $<HTMLDivElement>("#geojson-value");
+const wktValue = $<HTMLDivElement>("#wkt-value");
 
 osmIdInput.value = "";
 overpassApiEndpointInput.value = "";
@@ -175,11 +177,17 @@ function updateValues() {
     ) +
     "</pre></code>";
 
+  // geojson
+
   appendValue(
     geojsonValue,
     "application/json",
     JSON.stringify({ ...f, properties: {} }, null, 2)
   );
+
+  // wkt
+
+  appendValue(wktValue, "text/plain", wkt.stringify(f.geometry));
 }
 
 function appendValue(parent: HTMLDivElement, contentType: string, v: string) {
