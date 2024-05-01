@@ -170,11 +170,15 @@ function updateValues() {
   // bbox
 
   const bbox = L.geoJSON(f).getBounds();
+  const lngs = [bbox.getWest(), bbox.getEast()];
+  const lats = [bbox.getSouth(), bbox.getNorth()];
+  const minLng = Math.min(...lngs);
+  const maxLng = Math.max(...lngs);
+  const minLat = Math.min(...lats);
+  const maxLat = Math.max(...lats);
   bboxValue.innerHTML =
     "<pre><code>" +
-    [bbox.getSouth(), bbox.getWest(), bbox.getNorth(), bbox.getEast()].join(
-      ", "
-    ) +
+    [minLng, minLat, maxLng, maxLat].join(", ") +
     "</pre></code>";
 
   // geojson
