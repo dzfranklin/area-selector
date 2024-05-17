@@ -200,9 +200,19 @@ function appendValue(parent: HTMLDivElement, contentType: string, v: string) {
   parent.append(headerEl);
 
   const url = URL.createObjectURL(new Blob([v], { type: contentType }));
+  let downloadName = "bounds";
+  switch (contentType) {
+    case "application/json":
+      downloadName += ".json";
+      break;
+    default:
+      downloadName += ".txt";
+      break;
+  }
+
   const downloadEl = document.createElement("a");
   downloadEl.href = url;
-  downloadEl.download = "bounds_geojson.json";
+  downloadEl.download = downloadName;
   downloadEl.innerText = "Download";
   headerEl.append(downloadEl);
 
